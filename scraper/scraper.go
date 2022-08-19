@@ -9,6 +9,7 @@ import (
 
 func ScrapeQuoteImages() []string {
 	var images []string
+	// Gets page from url
 	res, err := http.Get("https://www.insightoftheday.com/")
 	if err != nil {
 		log.Fatal(err)
