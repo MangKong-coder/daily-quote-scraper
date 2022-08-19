@@ -1,0 +1,36 @@
+name: Daily Quote Scraper
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
+    
+    - name: Set Environment Variables
+      working-directory: ./
+      run: |
+          cat <<EOT >> .env
+          export SENDGRID_API_KEY={{ secrets.SENDGRID_API_KEY }}
+          export EMAIL={{ secrets.EMAIL }}
+          export NAME={{ secrets.NAME }}
+          EOT
+
+    - name: Install dependencies
+      run: go mod download && go mod verify
+
+    - name: Build
+      run: go build -v -o /usr/local/bin/daily-quote-scraper ./
+      env:
+          CI: true
