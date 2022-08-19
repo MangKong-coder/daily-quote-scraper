@@ -20,7 +20,7 @@ func EmailQuotes(imageBody string) {
 
 	// Compose email message
 	message := mail.NewSingleEmail(from, subject, to, "something", imageBody)
-	
+
 	// Creates new sendgrid client with API Key\
 	client := sendgrid.NewSendClient(os.Getenv("SENDGRID_API_KEY"))
 

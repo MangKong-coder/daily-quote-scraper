@@ -12,8 +12,8 @@ func main() {
 		// sends email at 8AM in the morning
 		if currentTime == "12:00:00" {
 			images := scraper.ScrapeQuoteImages()
-			var htmlString string;
-			 for _, j := range images {
+			var htmlString string
+			for _, j := range images {
 				htmlString += "<img src=\"" + j + "\" > \n"
 			}
 			email.EmailQuotes(htmlString)
