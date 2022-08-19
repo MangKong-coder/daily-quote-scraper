@@ -1,9 +1,10 @@
 package main
 
 import (
-	"daily-quote-scraper/email"
-	"daily-quote-scraper/scraper"
 	"time"
+
+	"github.com/MangKong-coder/daily-quote-scraper/email"
+	"github.com/MangKong-coder/daily-quote-scraper/scraper"
 )
 
 func main() {
